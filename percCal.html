@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Percentage Calculator</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      html,
+      body {
+        height: 100vh;
+        width: 100vw;
+      }
+
+      .con {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        background-color: lightcoral;
+        padding: 20px;
+        border-radius: 16px;
+      }
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .box .b input {
+        height: 40px;
+        width: 100px;
+        border-radius: 5px;
+        padding-left: 10px;
+      }
+
+      .box button {
+        font-size: 20px;
+        padding: 10px 20px;
+        background-color: rgb(95, 225, 225);
+        color: rgb(255, 0, 0);
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .d input {
+        height: 40px;
+        width: 200px;
+        border-radius: 5px;
+        padding-left: 10px;
+        cursor: not-allowed;
+      }
+
+      input:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="con">
+      <div class="main">
+        <h1>Percentage Calculator</h1>
+        <div class="box">
+          <div class="b">
+            <label for="">What is</label>
+            <input type="number" id="ip1" />
+            <label for="">% of</label>
+            <input type="number" id="ip2" />
+          </div>
+          <button type="button" onclick="cal()">Calculate</button>
+          <div class="d">
+            <input type="text" id="display" readonly />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let ip1 = document.getElementById("ip1");
+      let ip2 = document.getElementById("ip2");
+      let display = document.getElementById("display");
+      let percentage;
+
+      function cal() {
+        percentage = (ip1.value / 100) * ip2.value;
+        display.value = percentage;
+      }
+    </script>
+  </body>
+</html>
