@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Converter</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100vh;
+        width: 100vw;
+      }
+
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .con {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 2px 2px 5px rgb(99, 99, 99), -2px -2px 5px rgb(99, 99, 99);
+        background-color: rgb(140, 219, 219);
+        font-size: 24px;
+      }
+      #display {
+        height: 30px;
+        font-size: 18px;
+        text-align: center;
+        outline: none;
+        border: none;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+      #btn {
+        font-size: 24px;
+        padding: 2px 10px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="con">
+      <h1>Temperature Converter</h1>
+      <input type="number" id="display" />
+      <div>
+        <input type="radio" id="toFahrenheit" name="i" />
+        <label for="toFahrenheit">Ceslius ➡️ Fahrenheit</label>
+      </div>
+      <div>
+        <input type="radio" id="toCeslius" name="i" />
+        <label for="toCeslius">Fahrenheit ➡️ Ceslius</label>
+      </div>
+      <button id="btn" type="button" onclick="convert()">Convert</button>
+      <p id="result"></p>
+    </div>
+    <script>
+      let display = document.getElementById("display");
+      let toFahrenheit = document.getElementById("toFahrenheit");
+      let toCeslius = document.getElementById("toCeslius");
+      let result = document.getElementById("result");
+      let temp;
+
+      function convert() {
+        if (toFahrenheit.checked) {
+          temp = Number(display.value);
+          temp = (temp * 9) / 5 + 32;
+          result.textContent = temp.toFixed(1) + " °F";
+        } else if (toCeslius.checked) {
+          temp = Number(display.value);
+          temp = ((temp - 32) * 9) / 5;
+          result.textContent = temp.toFixed(1) + " °C";
+        } else {
+          result.textContent = "Select a unit";
+        }
+      }
+    </script>
+  </body>
+</html>
