@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .stopWatch {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #start,
+        #stop,#clear {
+            font-size: 24px;
+            padding: 10px 30px;
+            background-color: rebeccapurple;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .text {
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="stopWatch">
+            <div>
+                <p class="text">Timer</p>
+            </div>
+            <div class="btn">
+                <button id="start">Start</button>
+                <button id="stop">Stop</button>
+                <button id="clear">clear</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let display = document.querySelector(".text")
+        let start = document.querySelector("#start");
+        let stop = document.querySelector("#stop");
+        let clear = document.querySelector("#clear");
+        let c = 0;
+        let timeRef;
+        const show = () => {
+            display.innerHTML = "Loading....";
+            timeRef = setInterval(() => {
+                display.innerHTML = `${c}`;
+                c++;
+            }, 1000)
+        }
+        start.addEventListener("click", show);
+
+        const hide = () => {
+            clearInterval(timeRef);
+        }
+
+        stop.addEventListener("click", hide);
+
+        clear.addEventListener("click",function fn(){
+            c--;
+            display.innerHTML = `${c}`;
+            
+        })
+
+    </script>
+</body>
+
+</html>
